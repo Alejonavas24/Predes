@@ -5,10 +5,10 @@ import ssl
 import paho.mqtt.client as mqtt
 
 # ——— Configuración MQTT (HiveMQ Cloud) ———
-BROKER   = "ec6ee2c3428541a5b0c076d0aca0163e.s1.eu.hivemq.cloud"
+BROKER   = "ec6ee2c3428541a5b0c076da0ca0163e.s1.eu.hivemq.cloud"
 PORT     = 8883                              # TLS port
-USERNAME = ""               # pon aquí tu usuario del dashboard
-PASSWORD = "a"               # pon aquí tu contraseña del dashboard
+USERNAME = "cambiar esto"               # pon aquí tu usuario del dashboard
+PASSWORD = "cambiar esto"               # pon aquí tu contraseña del dashboard
 TOPIC    = "forest/sensors"
 
 def read_sensors():
@@ -22,7 +22,7 @@ def read_sensors():
 
 def main():
     # 1) Creamos el cliente MQTT
-    client = mqtt.Client(client_id="sensor-node-1", protocol=mqtt.MQTTv311)
+    client = mqtt.Client(client_id="sensor-node-1", userdata=None, protocol=mqtt.MQTTv311)
 
     # 2) Configuramos TLS para cifrar la conexión
     client.tls_set(         # usa las CAs por defecto del sistema
@@ -33,7 +33,7 @@ def main():
         tls_version=ssl.PROTOCOL_TLS,
         ciphers=None
     )
-    client.tls_insecure_set(False)  # asegurar validación de certificado
+    client.tls_insecure_set(True)  
 
     # 3) Autenticación con usuario/clave
     client.username_pw_set(USERNAME, PASSWORD)
@@ -53,8 +53,9 @@ def main():
                 **data
             })
             # 6) Publicamos por TLS en el topic seguro
-            client.publish(TOPIC, payload, qos=1)
-            print(f"[SENSOR] Publicado: {payload}")
+            print(client.publish(TOPIC, payload, qos=1))
+            #print("mamawebo")
+            #print(f"[SENSOR] Publicado: {payload}")
             time.sleep(60)  # espera 1 minuto entre lecturas
     finally:
         client.loop_stop()
