@@ -111,8 +111,3 @@ flowchart LR
 
 
 
-## 🤝 Contribuciones
-
-¡Bienvenidas! Si encuentras errores o tienes mejoras, abre un *issue* o un *pull request*.
-
-
