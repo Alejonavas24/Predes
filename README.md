@@ -109,14 +109,10 @@ flowchart LR
      python server_ingest.py
      ```
 
-## 📈 Visualización y Dashboards
 
-Puedes crear dashboards en Grafana o Zoho Analytics conectándolos a InfluxDB para visualizar las series temporales de temperatura, humedad, CO₂ y humo.
 
 ## 🤝 Contribuciones
 
 ¡Bienvenidas! Si encuentras errores o tienes mejoras, abre un *issue* o un *pull request*.
 
-## 📄 Licencia
 
-Este proyecto está bajo la licencia MIT. Véase el archivo [LICENSE](LICENSE) para más detalles.
